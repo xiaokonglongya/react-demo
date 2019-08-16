@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React ,{Component}from 'react';
+import { Row, Col } from 'antd';
+import Home from  './Components/Home'
+import DataList from  './Components/List'
+import Title from  './Components/Title'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export  default  class  App extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            message:'Hi,React',
+            list:[
+                {
+                    name:'迪迦奥特曼',
+                    age:32
+                },
+                {
+                    name:'泰罗奥特曼',
+                    age:38
+                }
+            ]
+        }
+    }
+    render(){
+        let {message,list}=this.state
+          return (
+            <div >
+                <Title message={message}/>
+                <Row>
+                    <Col span={6}> <Home message={message}/></Col>
+                    <Col span={12}> <DataList list={list}/></Col>
+                </Row>
+            </div>
+            )
+    }
 }
 
-export default App;
