@@ -18,12 +18,13 @@ export  default  class  App extends Component {
     }
     AddItem=item=>{
         const  list=this.state.list
+        const  {checklist}=this.state
         if(!item.trim()){
-            message.error('This can not empty！！！')
+            message.error('你不能写个空的！！！')
             return
         }
-        if(list.includes(item)){
-            message.error('This is already exists')
+        if(list.includes(item)&&checklist.includes(item)){
+            message.error('已经存在或完成了哦~')
         }else{
              list.push(item)
         }
